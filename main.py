@@ -1,12 +1,18 @@
 from analyser import analyze_consistency
 from ollama_client import analyze_with_ollama
 
+chunk_window = 200
+word_overlap = 50
 
 def main():
     # Default prompt message
-    default_message = """Please analyze this text and its stylometric features like average word length, \
+    default_message = f"""Please analyze this text and its stylometric features like average word length, \
     average sentence length, lexical diversity, frequency term 'that', frequency  of term 'of', frequency of term 'then', \
-    passive/active voice counts, readability score. 
+    passive/active voice counts, readability score. \
+    The analysis should follow this procedure: \
+    1. Use a sliding window approach and perform the stylometry analysis on the text chunks, chunk size will be {chunk_window} words
+     with an overlap of {word_overlap} words\
+    2. Normalize the values of the stylometry features and use cosine similarity to compute a score and map out for every chunk.\
     Tell me if there are multiple writing styles present or not, or an inconsistency across the writing style. Respond with yes/no."""
 
     # log_content = """It was in the morning when my eyes caught something upon the window-sill. There, upon the white painted wooden beam of oak \
@@ -16,7 +22,7 @@ def main():
 
     # Read log content from a file
     # Hardcoded file path
-    file_path = "test docs/suspicious-document00002.txt"
+    file_path = "test docs/suspicious-document00003.txt"
 
     try:
         with open(file_path, "r", encoding="utf-8") as file:
