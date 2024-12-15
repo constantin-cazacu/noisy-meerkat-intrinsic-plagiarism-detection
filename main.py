@@ -22,7 +22,7 @@ def main():
 
     # Read log content from a file
     # Hardcoded file path
-    file_path = "test docs/suspicious-document00003.txt"
+    file_path = "test docs/suspicious-document00001.txt"
 
     try:
         with open(file_path, "r", encoding="utf-8") as file:
@@ -40,8 +40,8 @@ def main():
     try:
         # Analyze with Ollama
         response_text = analyze_with_ollama(prompt)
-        print("Ollama Analysis Result:")
-        print(response_text)
+        # print("Ollama Analysis Result:")
+        # print(response_text)
 
         # Analyze consistency of the response
         verdict = analyze_consistency(response_text)
