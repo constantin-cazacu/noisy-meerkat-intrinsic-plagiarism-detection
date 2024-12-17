@@ -27,18 +27,18 @@ function HomePage() {
   return (
     <Box p={5}>
       <SearchBar placeholder="Search documents" />
-      {/*<SimpleGrid columns={{ base: 2, md: 4 }} spacing={6}>*/}
-      {/*  <AddNewCard onClick={handleAddNew} />*/}
-      {/*  {files.map((file, index) => (*/}
-      {/*    <FileCard*/}
-      {/*      key={index}*/}
-      {/*      name={file.name}*/}
-      {/*      lastAccessed={file.lastAccessed}*/}
-      {/*      onRename={() => handleRename(file.name)}*/}
-      {/*      onDelete={() => handleDelete(file.name)}*/}
-      {/*    />*/}
-      {/*  ))}*/}
-      {/*</SimpleGrid>*/}
+      <SimpleGrid columns={{ base: 2, md: 4 }} spacing={6}>
+        <AddNewCard onClick={handleAddNew} />
+        {files.map((file, index) => (
+          <FileCard
+            key={index}
+            name={file.name}
+            lastAccessed={file.lastAccessed}
+            onRename={() => handleRename(file.name)}
+            onDelete={() => handleDelete(file.name)}
+          />
+        ))}
+      </SimpleGrid>
     </Box>
   );
 }
