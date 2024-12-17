@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import SearchBar from "../components/SearchBar";
 import FileCard from "../components/FileCard";
 import AddNewCard from "../components/AddNewCard";
+import AddNewModal from "../components/AddNewModal";
 
 function HomePage() {
+  const [isModalOpen, setModalOpen] = useState(false)
+
   const files = [
     { name: "File 1", lastAccessed: "Dec 10, 2024" },
     { name: "File 2", lastAccessed: "Dec 8, 2024" },
@@ -13,8 +16,12 @@ function HomePage() {
   ];
 
   const handleAddNew = () => {
-    console.log("Add new document");
+    setModalOpen(true);
   };
+  
+  const handleModalClose = () => {
+    setModalOpen(false);
+  }
 
   const handleRename = (name) => {
     console.log(`Rename file: ${name}`);
@@ -39,6 +46,9 @@ function HomePage() {
           />
         ))}
       </SimpleGrid>
+
+      <AddNewModal isOpen={isModalOpen}
+                   onClose={handleModalClose} />
     </Box>
   );
 }
