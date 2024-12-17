@@ -75,9 +75,9 @@ function AddNewModal({ isOpen, onClose }) {
           </VStack>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={onClose} colorScheme="red">
-            Close
-          </Button>
+          {/*<Button onClick={onClose} colorScheme="red">*/}
+          {/*  Close*/}
+          {/*</Button>*/}
         </ModalFooter>
       </ModalContent>
     </Modal>
